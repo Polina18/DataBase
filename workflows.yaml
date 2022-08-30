@@ -1,0 +1,31 @@
+comment: '...'
+before_all:  # описываем таски, которые выполнятся единожды перед всеми тасками из блока main_tasks
+  - comment: 'Install dependencies'
+    subtasks:
+      - type: 'shell'
+        file_location: './project/install.sh'
+main_tasks:  # основные таски-тесты
+  - comment: 'Create and insert'
+    subtasks:
+       - type: 'complex_sql'
+         file_location: './code/create.sql'
+       - type: 'complex_sql'
+         file_location: './code/inserts.sql'
+  - comment: 'Crud and select'
+    subtasks:
+       - type: 'complex_sql'
+         file_location: './code/crud.sql'
+       - type: 'complex_sql'
+         file_location: './code/select.sql'
+  - comment: 'Indexes'
+    subtasks:
+       - type: 'complex_sql'
+         file_location: './code/indexes.sql'
+  - comment: 'Views'
+    subtasks:
+       - type: 'complex_sql'
+         file_location: './code/views.sql'
+  - comment: 'Procedure + trigger'
+    subtasks:
+       - type: 'complex_sql'
+         file_location: './code/procedure_trigger.sql'
